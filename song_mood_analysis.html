@@ -90,16 +90,13 @@
         let csvData = null;
         let analysisResults = null;
 
-        // Tab switching
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', function() {
                 const tabName = this.dataset.tab;
-                
-                // Update active tab
+
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
-                
-                // Update active content
+
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.classList.remove('active');
                 });
@@ -147,8 +144,7 @@
 
         function calculateMoodWeights(data) {
             const results = [];
-            
-            // Filter out rows with missing data
+
             const cleanData = data.filter(row => 
                 row.song && row.key && row.energy && row.Lyrics && row.tempo
             );
@@ -161,13 +157,11 @@
 
                 if (isNaN(key) || isNaN(energy) || isNaN(tempo)) continue;
 
-                // Helper function
                 function containsKeywords(text, keywords) {
                     const regex = new RegExp(`\\b(${keywords})\\b`, 'i');
                     return regex.test(text);
                 }
 
-                // Calculate mood weights
                 const sadCount = [
                     key < 5,
                     energy < 0.4,
@@ -211,7 +205,6 @@
                     relaxing_weight: relaxingCount / 4
                 };
 
-                // Determine major and second major feelings
                 const sortedMoods = Object.entries(weights)
                     .map(([mood, weight]) => [mood.replace('_weight', ''), weight])
                     .sort((a, b) => b[1] - a[1]);
@@ -284,13 +277,11 @@
 
                 if (isNaN(processedRow.key) || isNaN(processedRow.energy) || isNaN(processedRow.tempo)) continue;
 
-                // Calculate weights for each mood
                 const weights = {};
                 for (const [mood, checks] of Object.entries(moods)) {
                     weights[mood] = checks.filter(check => check(processedRow)).length / checks.length;
                 }
 
-                // Find the major feeling
                 const majorMood = Object.entries(weights).reduce((a, b) => weights[a[0]] > weights[b[0]] ? a : b)[0];
                 const majorWeight = weights[majorMood];
 
@@ -301,7 +292,6 @@
                 });
             }
 
-            // Sort each mood table by weight (descending)
             for (const mood in moodTables) {
                 moodTables[mood].sort((a, b) => b.weight - a.weight);
             }
@@ -336,7 +326,6 @@
             const container = document.getElementById('moodTablesContainer');
             container.innerHTML = '';
 
-            // Define all mood categories to ensure they all appear
             const allMoods = ['happy', 'sad', 'romantic', 'relaxing', 'energetic'];
             
             for (const mood of allMoods) {
@@ -346,7 +335,6 @@
                 card.className = 'mood-table-card';
                 
                 if (songs.length === 0) {
-                    // Display empty table
                     card.innerHTML = `
                         <div class="mood-table-header ${mood}">
                             🎵 ${mood.charAt(0).toUpperCase() + mood.slice(1)} Songs (0)
@@ -356,7 +344,6 @@
                         </div>
                     `;
                 } else {
-                    // Display table with songs
                     card.innerHTML = `
                         <div class="mood-table-header ${mood}">
                             🎵 ${mood.charAt(0).toUpperCase() + mood.slice(1)} Songs (${songs.length})
