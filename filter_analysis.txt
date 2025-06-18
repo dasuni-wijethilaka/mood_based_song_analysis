@@ -1,0 +1,19 @@
+FILTER ANALYSIS REPORT
+=========================
+
+Dataset: music_data_corrected.csv
+Total songs: 9
+Songs meeting criteria: 1
+Success rate: 11.11%
+
+CRITERIA:
+- danceability < 0.6
+- key < 5
+- tempo < 150
+- genre = 'pop'
+
+STEP-BY-STEP FILTERING:
+1. danceability < 0.5: 3 songs
+2. + key < 5: 1 songs
+3. + tempo < 150: 1 songs
+4. + genre = 'pop': 1 songs

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 Mood Analysis Dashboard</title>
+    <link rel="stylesheet" href="song_analysis_ui.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 Mood Analysis Dashboard</h1>
+            <p>Upload your CSV file to analyze song moods and emotions</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="file-input-container">
+                <input type="file" id="csvFile" class="file-input" accept=".csv" />
+                <label for="csvFile" class="file-input-label">
+                    📂 Choose CSV File
+                </label>
+            </div>
+            <button id="analyzeBtn" class="analyze-btn" disabled>
+                🔍 Analyze Moods
+            </button>
+            <div id="fileName" style="margin-top: 10px; color: #666;"></div>
+        </div>
+
+        <div id="tabsContainer" style="display: none;">
+            <div class="tabs">
+                <div class="tab active" data-tab="overview">📊 Mood Analysis Overview</div>
+                <div class="tab" data-tab="categories">🎯 Songs by Mood Categories</div>
+            </div>
+
+            <div id="overviewTab" class="tab-content active">
+                <div id="statsContainer" class="stats-container">
+                    <div class="stat-card">
+                        <div id="totalSongs" class="stat-number">0</div>
+                        <div class="stat-label">Total Songs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="avgHappy" class="stat-number">0%</div>
+                        <div class="stat-label">Avg Happy Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="avgSad" class="stat-number">0%</div>
+                        <div class="stat-label">Avg Sad Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div id="topMood" class="stat-number">-</div>
+                        <div class="stat-label">Most Common Mood</div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="moodTable" class="mood-table">
+                        <thead>
+                            <tr>
+                                <th>Song</th>
+                                <th>Sad</th>
+                                <th>Happy</th>
+                                <th>Energetic</th>
+                                <th>Romantic</th>
+                                <th>Relaxing</th>
+                                <th>Primary Mood</th>
+                                <th>Secondary Mood</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="categoriesTab" class="tab-content">
+                <div id="moodTablesContainer" class="mood-tables-container">
+                </div>
+            </div>
+        </div>
+
+        <div id="loadingMessage" class="loading" style="display: none;">
+            🎵 Analyzing your music data...
+        </div>
+
+        <div id="errorMessage" class="error" style="display: none;"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script>
+        let csvData = null;
+        let analysisResults = null;
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.dataset.tab;
+                
+                // Update active tab
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update active content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabName + 'Tab').classList.add('active');
+            });
+        });
+
+        document.getElementById('csvFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('fileName').textContent = `Selected: ${file.name}`;
+                document.getElementById('analyzeBtn').disabled = false;
+                
+                Papa.parse(file, {
+                    header: true,
+                    complete: function(results) {
+                        csvData = results.data;
+                    },
+                    error: function(error) {
+                        showError('Error reading CSV file: ' + error.message);
+                    }
+                });
+            }
+        });
+
+        document.getElementById('analyzeBtn').addEventListener('click', function() {
+            if (!csvData) {
+                showError('Please select a CSV file first');
+                return;
+            }
+
+            showLoading();
+            setTimeout(() => {
+                try {
+                    analysisResults = calculateMoodWeights(csvData);
+                    const moodTables = generateFeelingTables(csvData);
+                    displayOverviewResults(analysisResults);
+                    displayMoodTables(moodTables);
+                    document.getElementById('tabsContainer').style.display = 'block';
+                } catch (error) {
+                    showError('Error analyzing data: ' + error.message);
+                }
+            }, 500);
+        });
+
+        function calculateMoodWeights(data) {
+            const results = [];
+            
+            // Filter out rows with missing data
+            const cleanData = data.filter(row => 
+                row.song && row.key && row.energy && row.Lyrics && row.tempo
+            );
+
+            for (const row of cleanData) {
+                const lyrics = row.Lyrics || '';
+                const key = parseFloat(row.key);
+                const energy = parseFloat(row.energy);
+                const tempo = parseFloat(row.tempo);
+
+                if (isNaN(key) || isNaN(energy) || isNaN(tempo)) continue;
+
+                // Helper function
+                function containsKeywords(text, keywords) {
+                    const regex = new RegExp(`\\b(${keywords})\\b`, 'i');
+                    return regex.test(text);
+                }
+
+                // Calculate mood weights
+                const sadCount = [
+                    key < 5,
+                    energy < 0.4,
+                    tempo < 90,
+                    containsKeywords(lyrics, "sorry|cry|lonely|sad|goodbye|fall")
+                ].filter(Boolean).length;
+
+                const happyCount = [
+                    energy > 0.6,
+                    tempo > 110,
+                    [2, 4, 7, 11].includes(key),
+                    containsKeywords(lyrics, "fun|smile|party|sunshine|joy")
+                ].filter(Boolean).length;
+
+                const energeticCount = [
+                    energy > 0.7,
+                    tempo > 120,
+                    [2, 4, 7, 11].includes(key),
+                    containsKeywords(lyrics, "fire|dance|wild|burn|crazy|alive")
+                ].filter(Boolean).length;
+
+                const romanticCount = [
+                    energy >= 0.4 && energy <= 0.7,
+                    tempo >= 80 && tempo <= 115,
+                    [0, 7, 9].includes(key),
+                    containsKeywords(lyrics, "love|heart|kiss|baby|darling|hold")
+                ].filter(Boolean).length;
+
+                const relaxingCount = [
+                    energy < 0.5,
+                    tempo >= 70 && tempo <= 110,
+                    [5, 7].includes(key),
+                    containsKeywords(lyrics, "calm|peace|slow|breeze|chill|dream")
+                ].filter(Boolean).length;
+
+                const weights = {
+                    sad_weight: sadCount / 4,
+                    happy_weight: happyCount / 4,
+                    energetic_weight: energeticCount / 4,
+                    romantic_weight: romanticCount / 4,
+                    relaxing_weight: relaxingCount / 4
+                };
+
+                // Determine major and second major feelings
+                const sortedMoods = Object.entries(weights)
+                    .map(([mood, weight]) => [mood.replace('_weight', ''), weight])
+                    .sort((a, b) => b[1] - a[1]);
+
+                results.push({
+                    song: row.song,
+                    ...weights,
+                    major_feeling: sortedMoods[0][0],
+                    second_major_feeling: sortedMoods[1][0]
+                });
+            }
+
+            return results;
+        }
+
+        function generateFeelingTables(data) {
+            const cleanData = data.filter(row => 
+                row.song && row.key && row.energy && row.Lyrics && row.tempo
+            );
+
+            const moodTables = {
+                happy: [],
+                sad: [],
+                romantic: [],
+                relaxing: [],
+                energetic: []
+            };
+
+            const moods = {
+                happy: [
+                    (r) => r.energy > 0.6,
+                    (r) => r.tempo > 110,
+                    (r) => [2, 4, 7, 11].includes(r.key),
+                    (r) => /\b(fun|smile|party|sunshine|joy)\b/i.test(r.Lyrics)
+                ],
+                sad: [
+                    (r) => r.key < 5,
+                    (r) => r.energy < 0.4,
+                    (r) => r.tempo < 90,
+                    (r) => /\b(sorry|cry|lonely|sad|goodbye|fall)\b/i.test(r.Lyrics)
+                ],
+                romantic: [
+                    (r) => r.energy >= 0.4 && r.energy <= 0.7,
+                    (r) => r.tempo >= 80 && r.tempo <= 115,
+                    (r) => [0, 7, 9].includes(r.key),
+                    (r) => /\b(love|heart|kiss|baby|darling|hold)\b/i.test(r.Lyrics)
+                ],
+                relaxing: [
+                    (r) => r.energy < 0.5,
+                    (r) => r.tempo >= 70 && r.tempo <= 110,
+                    (r) => [5, 7].includes(r.key),
+                    (r) => /\b(calm|peace|slow|breeze|chill|dream)\b/i.test(r.Lyrics)
+                ],
+                energetic: [
+                    (r) => r.energy > 0.7,
+                    (r) => r.tempo > 120,
+                    (r) => [2, 4, 7, 11].includes(r.key),
+                    (r) => /\b(fire|dance|wild|burn|crazy|alive)\b/i.test(r.Lyrics)
+                ]
+            };
+
+            for (const row of cleanData) {
+                const processedRow = {
+                    song: row.song,
+                    key: parseFloat(row.key),
+                    energy: parseFloat(row.energy),
+                    tempo: parseFloat(row.tempo),
+                    Lyrics: row.Lyrics
+                };
+
+                if (isNaN(processedRow.key) || isNaN(processedRow.energy) || isNaN(processedRow.tempo)) continue;
+
+                // Calculate weights for each mood
+                const weights = {};
+                for (const [mood, checks] of Object.entries(moods)) {
+                    weights[mood] = checks.filter(check => check(processedRow)).length / checks.length;
+                }
+
+                // Find the major feeling
+                const majorMood = Object.entries(weights).reduce((a, b) => weights[a[0]] > weights[b[0]] ? a : b)[0];
+                const majorWeight = weights[majorMood];
+
+                moodTables[majorMood].push({
+                    major_feeling: majorMood,
+                    song: processedRow.song,
+                    weight: majorWeight
+                });
+            }
+
+            // Sort each mood table by weight (descending)
+            for (const mood in moodTables) {
+                moodTables[mood].sort((a, b) => b.weight - a.weight);
+            }
+
+            return moodTables;
+        }
+
+        function displayOverviewResults(results) {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+
+            results.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${row.song}</strong></td>
+                    <td class="mood-weight ${getWeightClass(row.sad_weight)}">${(row.sad_weight * 100).toFixed(0)}%</td>
+                    <td class="mood-weight ${getWeightClass(row.happy_weight)}">${(row.happy_weight * 100).toFixed(0)}%</td>
+                    <td class="mood-weight ${getWeightClass(row.energetic_weight)}">${(row.energetic_weight * 100).toFixed(0)}%</td>
+                    <td class="mood-weight ${getWeightClass(row.romantic_weight)}">${(row.romantic_weight * 100).toFixed(0)}%</td>
+                    <td class="mood-weight ${getWeightClass(row.relaxing_weight)}">${(row.relaxing_weight * 100).toFixed(0)}%</td>
+                    <td><span class="mood-tag mood-${row.major_feeling}">${row.major_feeling}</span></td>
+                    <td><span class="mood-tag mood-${row.second_major_feeling}">${row.second_major_feeling}</span></td>
+                `;
+                tableBody.appendChild(tr);
+            });
+
+            updateStats(results);
+            document.getElementById('loadingMessage').style.display = 'none';
+        }
+
+        function displayMoodTables(moodTables) {
+            const container = document.getElementById('moodTablesContainer');
+            container.innerHTML = '';
+
+            // Define all mood categories to ensure they all appear
+            const allMoods = ['happy', 'sad', 'romantic', 'relaxing', 'energetic'];
+            
+            for (const mood of allMoods) {
+                const songs = moodTables[mood] || [];
+                
+                const card = document.createElement('div');
+                card.className = 'mood-table-card';
+                
+                if (songs.length === 0) {
+                    // Display empty table
+                    card.innerHTML = `
+                        <div class="mood-table-header ${mood}">
+                            🎵 ${mood.charAt(0).toUpperCase() + mood.slice(1)} Songs (0)
+                        </div>
+                        <div class="empty-table-message">
+                            No songs found for this mood category
+                        </div>
+                    `;
+                } else {
+                    // Display table with songs
+                    card.innerHTML = `
+                        <div class="mood-table-header ${mood}">
+                            🎵 ${mood.charAt(0).toUpperCase() + mood.slice(1)} Songs (${songs.length})
+                        </div>
+                        <div class="mood-table-body">
+                            <table>
+                                <tbody>
+                                    ${songs.map(song => `
+                                        <tr>
+                                            <td><strong>${song.song}</strong></td>
+                                            <td class="mood-weight ${getWeightClass(song.weight)}">${(song.weight * 100).toFixed(0)}%</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                }
+                
+                container.appendChild(card);
+            }
+        }
+
+        function updateStats(results) {
+            const totalSongs = results.length;
+            const avgHappy = (results.reduce((sum, r) => sum + r.happy_weight, 0) / totalSongs * 100).toFixed(0);
+            const avgSad = (results.reduce((sum, r) => sum + r.sad_weight, 0) / totalSongs * 100).toFixed(0);
+            
+            const moodCounts = {};
+            results.forEach(r => {
+                moodCounts[r.major_feeling] = (moodCounts[r.major_feeling] || 0) + 1;
+            });
+            const topMood = Object.entries(moodCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || '-';
+
+            document.getElementById('totalSongs').textContent = totalSongs;
+            document.getElementById('avgHappy').textContent = avgHappy + '%';
+            document.getElementById('avgSad').textContent = avgSad + '%';
+            document.getElementById('topMood').textContent = topMood;
+        }
+
+        function getWeightClass(weight) {
+            if (weight >= 0.7) return 'weight-high';
+            if (weight >= 0.4) return 'weight-medium';
+            return 'weight-low';
+        }
+
+        function showLoading() {
+            document.getElementById('loadingMessage').style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('tabsContainer').style.display = 'none';
+        }
+
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorMessage').style.display = 'block';
+            document.getElementById('loadingMessage').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
