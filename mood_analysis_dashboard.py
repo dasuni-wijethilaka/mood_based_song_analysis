@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import re
 
-st.set_page_config(page_title="🎵 Mood Analysis Dashboard", layout="wide")
+st.set_page_config(page_title="🎵 Song Mood Analysis Dashboard", layout="wide")
 
 st.title("🎵 Song Mood Analysis Dashboard")
 st.markdown("Upload your **CSV** file to analyze song moods and emotions.")
@@ -99,7 +99,7 @@ def analyze_moods(df):
                 lyric_score = int(contains_keywords(lyrics, "love|heart|kiss|baby|darling|hold|you|mine|beats"))
                 weighted_scores[mood] = (energy_score * 0.2 + lyric_score * 0.5 + tempo_score * 0.2 + key_score * 0.1)
                 
-            else:  # relaxing
+            elif  mood == 'relaxing':
                 key_score = int(key in [2, 3, 7])
                 energy_score = int(energy < 0.4)
                 tempo_score = int(70 <= tempo <= 90)

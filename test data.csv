@@ -1,23 +1,27 @@
-singer,song,energy,key,tempo,Lyrics,,
-Taylor Swift,Shake It Off,0.85,4,125,I'm gonna party and smile through the sunshine,,
-Taylor Swift,Cruel Summer,0.8,7,125,Fun and sunshine make me smile all night,,
-Adele,Someone Like You,0.3,1,70,"I'm sorry you're gone, I feel so lonely and sad",,
-Adele,Skyfall,0.3,3,75,"Let the sky fall, I'm falling apart",,
-Sam Smith,Too Good At Goodbyes,0.3,0,80,"I cry, I fall, I say goodbye again",,
-Wiz Khalifa,See You Again (feat. Charlie Puth),0.3,1,80,"Sadness hits me, I miss you, goodbye",,
-Shawn Mendes,Treat You Better,0.5,0,100,"Love you darling, I want to kiss and hold you",,
-Maroon 5,Girls Like You (feat. Cardi B) - Cardi B Version,0.6,9,90,"Heart beats for your love, baby you're mine",,
-Linkin Park,Numb,0.85,4,130,"I'm alive, I feel the fire and wild rush inside",,
-Linkin Park,In the End,0.3,2,85,"Nothing lasts, I cry and feel so sad",,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
+singer,song,energy,key,tempo,Lyrics
+Taylor Swift,Shake It Off,0.85,4,125,I'm gonna party and smile through the sunshine
+Taylor Swift,Cruel Summer,0.8,9,125,Fun and sunshine make me smile all night
+Adele,Someone Like You,0.3,2,70,"I'm sorry you're gone, I feel so lonely and sad"
+Adele,Skyfall,0.3,3,75,"Let the sky fall, I'm falling apart"
+Sam Smith,Too Good At Goodbyes,0.3,2,80,"I cry, I fall, I say goodbye again"
+Wiz Khalifa,See You Again (feat. Charlie Puth),0.3,2,80,"Sadness hits me, I miss you, goodbye"
+Shawn Mendes,Treat You Better,0.5,9,100,"Love you darling, I want to kiss and hold you"
+Maroon 5,Girls Like You (feat. Cardi B) - Cardi B Version,0.6,9,90,"Heart beats for your love, baby you're mine darling kiss beautiful girl"
+Linkin Park,Numb,0.6,4,90,"I'm alive, I feel the fire and wild rush inside"
+Linkin Park,In the End,0.36,2,82,"The sky falls calm, goodbye to summer days"
+Charlie Puth,We Don't Talk Anymore (feat. Selena Gomez),0.3,2,80,"I'm lonely, missing you, we don't talk anymore"
+Calvin Harris,One Kiss (with Dua Lipa),0.8,9,124,"One kiss is all it takes, falling in love tonight"
+Eminem,Mockingbird,0.3,2,80,"I cry for you, hold you tight, no goodbye"
+Ed Sheeran,Perfect,0.5,0,95,"Love you forever, dancing under the stars"
+Backstreet Boys,Show Me the Meaning of Being Lonely,0.3,2,75,Show me the meaning of being lonely
+Katy Perry,Roar,0.9,4,130,"I'm alive, hear me roar, wild and free"
+Christina Perri,A Thousand Years,0.4,0,85,I love you for a thousand years
+One Direction,Night Changes,0.5,9,90,"Love stays the same, life changes slowly"
+Shakira,Hips Don't Lie (feat. Wyclef Jean),0.9,4,135,"Dance all night, feel the fire, party on the floor, smile and shine"
+Lana Del Rey,Summertime Sadness (Cedric Gervais Remix),0.36,2,82,"The sky falls calm, goodbye to summer days"
+One Direction,What Makes You Beautiful,0.85,4,128,"You light up my world like nobody else, party all night, smile bright"
+One Direction,Live While We're Young,0.88,4,130,"Let's live while we're young, have fun, feel the rush, wild and free"
+Maroon 5,Sugar,0.82,9,125,"Your love is sweet like sugar, baby smile and dance all night"
+Jennifer Lopez,On The Floor,0.9,4,135,"Dance all night, feel the fire, party on the floor, smile and shine"
+Bruno Mars,When I Was Your Man,0.36,2,82,"The sky falls calm, goodbye to summer days"
+Bruno Mars,Talking to the Moon,0.36,2,82,"The sky falls calm, goodbye to summer days"
