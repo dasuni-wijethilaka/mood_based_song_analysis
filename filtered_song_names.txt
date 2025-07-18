@@ -1,6 +1,0 @@
-Songs with: danceability<0.6, key<5, tempo<150, genre='pop'
-============================================================
-
-Total songs found: 1
-
-1. Back To December
