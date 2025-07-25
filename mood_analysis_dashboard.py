@@ -34,35 +34,35 @@ def analyze_moods(df):
                 key in [2, 3] and energy < 0.4,  # Minor-ish keys + low energy
                 energy < 0.35,  # Very low energy threshold
                 tempo < 85,  # Slower tempo
-                contains_keywords(lyrics, "sorry|cry|lonely|sad|goodbye|fall|apart|miss|nothing|lasts|feel so")
+                contains_keywords(lyrics, "sorry|cry|lonely|sad|goodbye|fall|apart|miss|nothing|lasts")
             ]) / 4,
             
             'happy': sum([
                 energy > 0.75,  # High energy threshold
                 tempo > 120,  # Fast tempo
                 key in [4, 7, 9],  # Major-sounding keys
-                contains_keywords(lyrics, "party|smile|sunshine|fun|make me smile|all night")
+                contains_keywords(lyrics, "party|smile|sunshine|fun|up")
             ]) / 4,
             
             'energetic': sum([
                 energy > 0.8,  # Very high energy
                 tempo > 125,  # Very fast tempo
                 key in [4],  # Specific energetic key
-                contains_keywords(lyrics, "alive|fire|wild|rush|inside|shake")
+                contains_keywords(lyrics, "alive|fire|wild|rush|brave|shake")
             ]) / 4,
             
             'romantic': sum([
                 0.45 <= energy <= 0.65,  # Moderate energy range
                 80 <= tempo <= 100,  # Romantic tempo range
                 key in [0, 2, 9],  # Keys associated with love songs
-                contains_keywords(lyrics, "love|heart|kiss|baby|darling|hold|you|mine|beats")
+                contains_keywords(lyrics, "love|heart|kiss|baby|darling|hold")
             ]) / 4,
             
             'relaxing': sum([
                 energy < 0.4,  # Low energy
                 70 <= tempo <= 90,  # Slow to moderate tempo
                 key in [2, 3, 7],  # Calming keys
-                contains_keywords(lyrics, "sky|fall|good|calm|peace|slow|goodbye") and not contains_keywords(lyrics, "cry|sad|sorry")
+                contains_keywords(lyrics, "fall|good|calm|peace|slow|heal") and not contains_keywords(lyrics, "cry|sad|sorry")
             ]) / 4,
         }
 
