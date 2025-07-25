@@ -1,0 +1,21 @@
+Column Names:
+====================
+1. artist
+2. song
+3. duration_ms
+4. explicit
+5. year
+6. popularity
+7. danceability
+8. energy
+9. key
+10. loudness
+11. mode
+12. speechiness
+13. acousticness
+14. instrumentalness
+15. liveness
+16. valence
+17. tempo
+18. genre
+19. lyrics
