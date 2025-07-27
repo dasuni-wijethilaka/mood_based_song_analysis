@@ -111,11 +111,15 @@ def analyze_moods(df):
         second = sorted_moods[1][0]
 
         results.append({
-            'song': row['song'],
-            **{f'{m}_weight': w for m, w in weighted_scores.items()},
-            'major_feeling': major,
-            'second_major_feeling': second
-        })
+    'song': row['song'],
+    'singer': row.get('singer', ''),  # Add this
+    'tempo': tempo,                   # Add this
+    'energy': energy,                 # Add this
+    **{f'{m}_weight': w for m, w in weighted_scores.items()},
+    'major_feeling': major,
+    'second_major_feeling': second
+})
+
 
     return pd.DataFrame(results)
 
