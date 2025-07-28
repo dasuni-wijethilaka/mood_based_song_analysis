@@ -1,0 +1,101 @@
+song,singer,tempo,energy,sad_weight,happy_weight,energetic_weight,romantic_weight,relaxing_weight,major_feeling,second_major_feeling
+Shake It Off,Taylor Swift,125,0.85,0.4,1.0,0.75,0.5,0.3,happy,energetic
+Cruel Summer,Taylor Swift,125,0.8,0.0,1.0,0.0,0.6,0.3,happy,romantic
+Someone Like You,Adele,70,0.3,1.0,0.0,0.0,0.6,0.7,sad,relaxing
+Skyfall,Adele,75,0.3,1.0,0.0,0.0,0.5,1.0,sad,relaxing
+Too Good At Goodbyes,Sam Smith,80,0.3,1.0,0.0,0.0,0.8,0.7,sad,romantic
+See You Again (feat. Charlie Puth),Wiz Khalifa,80,0.3,1.0,0.0,0.0,0.8,1.0,sad,relaxing
+Treat You Better,Shawn Mendes,100,0.5,0.0,0.1,0.0,1.0,0.0,romantic,happy
+Girls Like You (feat. Cardi B) - Cardi B Version,Maroon 5,90,0.6,0.0,0.5,0.0,1.0,0.6,romantic,relaxing
+Numb,Linkin Park,130,0.9,0.4,0.6,1.0,0.5,0.0,energetic,happy
+In the End,Linkin Park,82,0.36,0.7,0.0,0.0,0.8,1.0,relaxing,romantic
+We Don't Talk Anymore (feat. Selena Gomez),Charlie Puth,80,0.3,1.0,0.0,0.0,0.8,1.0,sad,relaxing
+One Kiss (with Dua Lipa),Calvin Harris,124,0.8,0.0,0.6,0.0,0.6,0.0,happy,romantic
+Perfect,Ed Sheeran,95,0.5,0.0,0.0,0.0,1.0,0.3,romantic,relaxing
+Show Me the Meaning of Being Lonely,Backstreet Boys,75,0.3,1.0,0.0,0.0,0.6,0.7,sad,relaxing
+Roar,Katy Perry,130,0.9,0.4,0.6,1.0,0.5,0.0,energetic,happy
+A Thousand Years,Christina Perri,85,0.4,0.0,0.0,0.0,0.8,0.3,romantic,relaxing
+Night Changes,One Direction,90,0.5,0.0,0.1,0.0,1.0,0.3,romantic,relaxing
+Hips Don't Lie (feat. Wyclef Jean),Shakira,135,0.9,0.0,1.0,1.0,0.5,0.0,energetic,happy
+Summertime Sadness (Cedric Gervais Remix),Lana Del Rey,82,0.36,0.7,0.0,0.35,0.8,1.0,relaxing,romantic
+What Makes You Beautiful,One Direction,128,0.85,0.0,1.0,0.65,0.5,0.0,happy,energetic
+Live While We're Young,One Direction,130,0.88,0.0,1.0,1.0,0.5,0.0,energetic,happy
+Sugar,Maroon 5,125,0.82,0.0,1.0,0.35,0.6,0.3,happy,romantic
+On The Floor,Jennifer Lopez,135,0.9,0.0,1.0,1.0,0.5,0.0,energetic,happy
+When I Was Your Man,Bruno Mars,82,0.36,0.7,0.0,0.0,0.8,1.0,relaxing,romantic
+Talking to the Moon,Bruno Mars,82,0.36,0.7,0.0,0.0,0.8,1.0,relaxing,romantic
+You Belong With Me,Taylor Swift,130,0.76,0.4,1.0,0.6,0.6,0.0,happy,energetic
+Back To December,Taylor Swift,80,0.34,1.0,0.4,0.0,0.7,0.7,sad,romantic
+I Knew You Were Trouble.,Taylor Swift,80,0.3,1.0,0.4,0.35,0.8,0.7,sad,romantic
+Bad Blood,Taylor Swift,130,0.86,0.4,0.6,1.0,0.5,0.0,energetic,happy
+Style,Taylor Swift,100,0.58,0.0,0.1,0.35,1.0,0.3,romantic,energetic
+Blank Space,Taylor Swift,95,0.54,0.4,0.0,0.0,1.0,0.4,romantic,sad
+Look What You Made Me Do,Taylor Swift,135,0.88,0.4,0.6,1.0,0.5,0.0,energetic,happy
+Rolling in the Deep,Adele,80,0.3,1.0,0.0,0.35,0.8,1.0,sad,relaxing
+Set Fire to the Rain,Adele,80,0.3,1.0,0.0,0.35,0.8,1.0,sad,relaxing
+Rumour Has It,Adele,126,0.85,0.4,0.6,0.65,0.5,0.0,energetic,happy
+Hello,Adele,80,0.33,1.0,0.0,0.0,0.7,0.7,sad,romantic
+Dangerously,Charlie Puth,85,0.4,0.4,0.0,0.35,0.8,0.6,romantic,relaxing
+How Long,Charlie Puth,95,0.55,0.4,0.1,0.0,1.0,0.0,romantic,sad
+New Rules,Dua Lipa,125,0.8,0.0,1.0,0.35,0.6,0.0,happy,romantic
+IDGAF,Dua Lipa,128,0.84,0.4,1.0,1.0,0.5,0.0,energetic,happy
+Stan,Eminem,78,0.3,1.0,0.0,0.35,0.5,0.7,sad,relaxing
+Without Me,Eminem,132,0.9,0.0,0.6,1.0,0.5,0.0,energetic,happy
+"Lose Yourself - From ""8 Mile"" Soundtrack",Eminem,140,0.92,0.4,0.6,1.0,0.5,0.3,energetic,happy
+Mockingbird,Eminem,80,0.3,1.0,0.4,0.0,0.8,0.7,sad,romantic
+Love The Way You Lie,Eminem,85,0.38,0.5,0.0,0.35,0.7,0.7,romantic,relaxing
+The Monster,Eminem,128,0.86,0.4,0.6,1.0,0.5,0.3,energetic,happy
+Uptown Funk (feat. Bruno Mars),Mark Ronson,130,0.89,0.0,1.0,1.0,0.5,0.3,energetic,happy
+Firework,Katy Perry,124,0.82,0.0,1.0,0.7,0.6,0.3,happy,energetic
+Dark Horse,Katy Perry,130,0.85,0.4,0.6,1.0,0.5,0.3,energetic,happy
+Stitches,Shawn Mendes,130,0.88,0.4,0.6,0.65,0.5,0.3,energetic,happy
+I Know What You Did Last Summer,Shawn Mendes,130,0.88,0.4,0.6,0.65,0.5,0.0,energetic,happy
+Treat You Better,Shawn Mendes,96,0.55,0.0,0.1,0.0,1.0,0.0,romantic,happy
+There's Nothing Holdin' Me Back,Shawn Mendes,126,0.87,0.4,1.0,1.0,0.5,0.0,energetic,happy
+Mercy,Shawn Mendes,78,0.33,1.0,0.0,0.0,0.5,1.0,sad,relaxing
+Senorita,Shawn Mendes,100,0.6,0.4,0.5,0.0,1.0,0.3,romantic,happy
+One More Night,Maroon 5,135,0.9,0.4,0.6,0.65,0.5,0.0,energetic,happy
+Animals,Maroon 5,130,0.85,0.0,0.6,1.0,0.5,0.0,energetic,happy
+Girls Like You (feat. Cardi B) - Cardi B Version,Maroon 5,125,0.78,0.0,1.0,0.0,0.6,0.3,happy,romantic
+Baby,Justin Bieber,92,0.55,0.4,0.5,0.35,1.0,0.0,romantic,happy
+Love Yourself,Justin Bieber,82,0.36,0.7,0.0,0.0,0.8,1.0,relaxing,romantic
+Starboy,The Weeknd,130,0.88,0.4,0.6,1.0,0.5,0.0,energetic,happy
+I Feel It Coming,The Weeknd,92,0.55,0.4,0.1,0.35,1.0,0.3,romantic,sad
+Call Out My Name,The Weeknd,80,0.32,1.0,0.0,0.0,0.7,1.0,sad,relaxing
+Rockabye (feat. Sean Paul & Anne-Marie),Clean Bandit,128,0.85,0.4,0.6,0.65,0.5,0.0,energetic,happy
+Ciao Adios,Anne-Marie,124,0.8,0.0,1.0,0.35,0.6,0.0,happy,romantic
+2002,Anne-Marie,100,0.6,0.0,0.5,0.0,1.0,0.0,romantic,happy
+Halo,Beyoncé,82,0.52,0.6,0.4,0.0,1.0,0.6,romantic,sad
+Single Ladies (Put a Ring on It),Beyoncé,130,0.85,0.4,1.0,0.6,0.6,0.3,happy,energetic
+Same Old Love,Selena Gomez,80,0.3,1.0,0.0,0.0,0.8,1.0,sad,relaxing
+Let Me Love You,DJ Snake,96,0.58,0.4,0.1,0.0,1.0,0.3,romantic,sad
+Tonight (I'm Fuckin' You),Enrique Iglesias,132,0.88,0.4,0.6,1.0,0.5,0.3,energetic,happy
+Chandelier,Sia,80,0.3,1.0,0.4,0.0,0.8,0.7,sad,romantic
+Bailando,Enrique Iglesias,130,0.89,0.4,0.6,1.0,0.5,0.0,energetic,happy
+Cheap Thrills (feat. Sean Paul),Sia,90,0.85,0.0,0.7,0.35,0.7,0.3,happy,romantic
+Dusk Till Dawn (Radio Edit),ZAYN ft. Sia,130,0.85,0.4,0.6,1.0,0.5,0.3,energetic,happy
+Bad Romance,Lady Gaga,130,0.85,0.0,1.0,1.0,0.5,0.0,energetic,happy
+Side to Side,Ariana Grande,100,0.6,0.0,0.1,0.0,1.0,0.0,romantic,happy
+Sweet but Psycho,Ava Max,133,0.84,0.0,0.5,0.6,0.5,0.0,energetic,happy
+Dance Monkey,Tones And I,133,0.84,0.0,0.9,0.95,0.5,0.0,energetic,happy
+All About That Bass,Meghan Trainor,134,0.88,0.0,0.6,0.95,0.6,0.0,energetic,happy
+NO,Meghan Trainor,155,0.85,0.0,0.5,0.6,0.5,0.0,energetic,happy
+Steal My Girl,One Direction,100,0.78,0.0,0.3,0.0,0.8,0.1,romantic,happy
+Swalla (feat. Nicki Minaj & Ty Dolla $ign),Jason Derulo,105,0.89,0.0,0.4,0.35,0.5,0.4,romantic,happy
+Bye Bye Bye,*NSYNC,130,0.85,0.0,0.6,1.0,0.5,0.3,energetic,happy
+Obsessed,Mariah Carey,135,0.76,0.4,0.5,0.25,0.6,0.1,romantic,happy
+Shape of You,Ed Sheeran,96,0.83,0.0,0.3,0.35,0.7,0.0,romantic,energetic
+Believer,Imagine Dragons,130,0.85,0.0,0.6,1.0,0.5,0.0,energetic,happy
+bad guy,Billie Eilish,133,0.84,0.0,0.9,0.95,0.5,0.3,energetic,happy
+No Promises,Shayne Ward,84,0.65,0.2,0.0,0.0,0.9,0.3,romantic,relaxing
+Umbrella,Rihanna,100,0.6,0.4,0.5,0.0,1.0,0.3,romantic,happy
+Who Says,Selena Gomez & The Scene,125,0.85,0.0,1.0,0.4,0.5,0.3,happy,romantic
+The Lazy Song,Bruno Mars,82,0.36,0.7,0.0,0.0,0.3,0.7,sad,relaxing
+As Long As You Love Me,Justin Bieber,132,0.8,0.0,0.5,0.25,0.5,0.0,happy,romantic
+Beauty And A Beat,Justin Bieber,133,0.88,0.0,0.9,0.6,0.5,0.0,happy,energetic
+All of Me,John Legend,120,0.65,0.0,0.1,0.05,0.7,0.0,romantic,happy
+Maps,Maroon 5,104,0.75,0.4,0.0,0.0,0.5,0.0,romantic,sad
+Counting Stars,OneRepublic,130,0.85,0.0,0.6,1.0,0.5,0.0,energetic,happy
+Me And My Broken Heart,Rixton,80,0.3,1.0,0.0,0.0,0.8,0.7,sad,romantic
+Sorry,Justin Bieber,100,0.85,0.4,0.3,0.35,0.7,0.1,romantic,sad
+Close,Nick Jonas,106,0.78,0.0,0.3,0.0,0.5,0.0,romantic,happy
